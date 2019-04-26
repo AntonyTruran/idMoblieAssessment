@@ -1,0 +1,3 @@
+The first shell file will clone down an example pokedex web applicaiton from github
+  (link avaliable from the example react websites page: https://reactjs.org/community/examples.html)
+the second shell file will run the npm commands, updating the project and then running it.
