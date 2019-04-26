@@ -17,18 +17,22 @@ resource "google_compute_instance" "vm_instance" {
       // Ephemeral IP
     }
   }
-  provisioner "file" {
-    source      = "./installationScript.sh"
-    destination = "/home/tonytruran/installationScript.sh"
+  provisioner "remote-exec" "web" {
+      inline = [
+          "chmod +x ./installationScript.sh",
+          "bash ./installationScript.sh"
+      ]
     connection {
     type     = "ssh"
     user     = "tonytruran"
     private_key="${file("./private/id_rsa")}"
   }
   }
-  provisioner "file" {
-    source      = "./startupScript.sh"
-    destination = "/home/tonytruran/pokedex/npmScript.sh"
+  provisioner "remote-exec" "web" {
+    inline      = [
+        "chmod +x ./startupScript.sh",
+        "bash ./startupScript"
+    ]
     connection {
     type     = "ssh"
     user     = "tonytruran"
